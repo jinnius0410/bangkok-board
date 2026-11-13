@@ -40,7 +40,7 @@ img{display:block}
 .press:active{transform:scale(.97)}
 
 /* ---------- header ---------- */
-.wrap{max-width:1440px;margin:0 auto}
+.wrap{max-width:1720px;margin:0 auto}
 .top{padding:calc(14px + env(safe-area-inset-top)) var(--pad) 0}
 .bar1{display:flex;align-items:center;justify-content:space-between;height:40px}
 .bar1 .mono{color:var(--ink2);font-size:10px}
@@ -211,10 +211,25 @@ img{display:block}
   :root{--pad:28px}
   .title h1{font-size:40px}
   .days{max-width:560px}
-  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:480px;max-height:min(88vh,860px);border-radius:28px;transform:translate(-50%,-46%) scale(.96);opacity:0;transition:transform 300ms var(--ease-out),opacity 220ms var(--ease-out)}
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:min(680px,calc(100vw - 48px));max-height:min(92vh,980px);border-radius:28px;transform:translate(-50%,-46%) scale(.96);opacity:0;transition:transform 300ms var(--ease-out),opacity 220ms var(--ease-out)}
   .sheet.on{transform:translate(-50%,-50%) scale(1);opacity:1}
   .sheet .grab{display:none}
+  .sheet .sc{padding:14px 14px 0}
+  .sc .ph img{height:min(56vh,500px)}
+  .sb{padding:22px 10px 0}
+  .sb h2{font-size:28px}
+  .sb .th{font-size:16px}
+  .kv div{font-size:15px}
+  .kv>div>.mono{width:110px}
+  .sec p{font-size:15px}
+  .act{padding:14px 24px}
   .act{border-radius:0 0 28px 28px}
+}
+@media (min-width:1280px){
+  .grid{gap:16px}.col{gap:28px}
+  .card .t{font-size:16.5px}
+  .card .ln{font-size:14px}
+  .card .mono{font-size:10px}
 }
 @media (hover:hover){
   .card:hover .t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
@@ -423,7 +438,7 @@ function wireSlides(root){
   });
 }
 let LIST=[],COLS=0;
-const colCount=()=>{const w=document.documentElement.clientWidth;return w<370?1:w<720?2:Math.max(3,Math.min(7,Math.floor((w-56)/236)));};
+const colCount=()=>{const w=document.documentElement.clientWidth;return w<370?1:w<720?2:w<1000?3:w<1280?4:5;};
 function layout(force){
   const n=colCount(); if(!force&&n===COLS) return; COLS=n;
   const g=$('#grid'); g.innerHTML='';
